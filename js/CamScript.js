@@ -34,10 +34,11 @@ function tick() {
         canvasElement.height = video.videoHeight;
         canvasElement.width = video.videoWidth;
         // draw cam canvas
+        canvas.scale(screen.width / canvasElement.width, screen.width / canvasElement.width);
         canvas.filter = 'brightness(40%)';
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
         // draw QR canvas
-        canvas.filter = 'brightness(160%)';
+        canvas.filter = 'brightness(100%)';
         canvas.drawImage(video, canvasElement.width * 0.25, canvasElement.height * 0.1, canvasElement.width * 0.5, canvasElement.width * 0.5, canvasElement.width * 0.25, canvasElement.height * 0.1, canvasElement.width * 0.5, canvasElement.width * 0.5);
         canvas.lineWidth = 5;
         canvas.strokeRect(canvasElement.width * 0.25, canvasElement.height * 0.1, canvasElement.width * 0.5, canvasElement.width * 0.5);
@@ -46,9 +47,11 @@ function tick() {
         var code = jsQR(imageData.data, imageData.width, imageData.height, {
         inversionAttempts: "dontInvert",
         });
-        if (code) {
-            alert("topLeft.x: " + code.location.topLeftCorner.x + ", topLeft.y: " + code.location.topLeftCorner.y);
-            alert("bottomRight.x: " + code.location.bottomRightCorner.x + ", bottomRight.y: " + code.location.bottomRightCorner.y);
+        if (code
+            && code.location.topLeftCorner.x > (canvasElement.width * 0.25) && code.location.topLeftCorner.y > (canvasElement.height * 0.1)
+            && code.location.bottomRightCorner.x < (canvasElement.width) * 0.75 && code.location.bottomRightCorner.y < (canvasElement.height * 0.1 + canvasElement.width * 0.5)
+            ) {
+            alert("QR detected");
             drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
