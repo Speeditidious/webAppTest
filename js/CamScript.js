@@ -47,7 +47,8 @@ function tick() {
         inversionAttempts: "dontInvert",
         });
         if (code) {
-            alert("topLeft: " + code.location.topLeftCorner + ", bottomRight: " + code.location.bottomRightCorner);
+            alert("topLeft.x: " + code.location.topLeftCorner.x + ", topLeft.y: " + code.location.topLeftCorner.y);
+            alert("bottomRight.x: " + code.location.bottomRightCorner.x + ", bottomRight.y: " + code.location.bottomRightCorner.y);
             drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
