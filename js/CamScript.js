@@ -7,26 +7,20 @@ var outputMessage = document.getElementById("outputMessage");
 var outputData = document.getElementById("outputData");
 
 function drawLine(begin, end, color) {
-canvas.beginPath();
-canvas.moveTo(begin.x, begin.y);
-canvas.lineTo(end.x, end.y);
-canvas.lineWidth = 4;
-canvas.strokeStyle = color;
-canvas.stroke();
-}
-
-function drawCanvasQR(context, videoElement){
-alert("drawing QR canvas...");
-context.filter = 'brightness(160%)';
-context.fillRect(videoElement.videoWidth * 0.25, videoElement.videoHeight * 0.1, videoElement.videoWidth * 0.5, videoElement.videoWidth * 0.5);
+    canvas.beginPath();
+    canvas.moveTo(begin.x, begin.y);
+    canvas.lineTo(end.x, end.y);
+    canvas.lineWidth = 4;
+    canvas.strokeStyle = color;
+    canvas.stroke();
 }
 
 // Use facingMode: environment to attemt to get the front camera on phones
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-video.srcObject = stream;
-video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-video.play();
-requestAnimationFrame(tick);
+    video.srcObject = stream;
+    video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+    video.play();
+    requestAnimationFrame(tick);
 });
 
 function tick() {
@@ -41,22 +35,24 @@ function tick() {
         canvasElement.width = video.videoWidth;
         canvas.filter = 'brightness(40%)';
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-        drawCanvasQR(canvas, video);
+        // draw QR canvas
+        context.filter = 'brightness(160%)';
+        context.drawImage(video, video.videoWidth * 0.25, video.videoHeight * 0.1, video.videoWidth * 0.5, video.videoWidth * 0.5, video.videoWidth * 0.25, video.videoHeight * 0.1, video.videoWidth * 0.5, video.videoWidth * 0.5);
         var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
         var code = jsQR(imageData.data, imageData.width, imageData.height, {
         inversionAttempts: "dontInvert",
         });
         if (code) {
-        drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
-        drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
-        drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
-        drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-        outputMessage.hidden = true;
-        outputData.parentElement.hidden = false;
-        outputData.innerText = code.data;
+            drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+            drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+            drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+            drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+            outputMessage.hidden = true;
+            outputData.parentElement.hidden = false;
+            outputData.innerText = code.data;
         } else {
-        outputMessage.hidden = false;
-        outputData.parentElement.hidden = true;
+            outputMessage.hidden = false;
+            outputData.parentElement.hidden = true;
         }
     }
     requestAnimationFrame(tick);
