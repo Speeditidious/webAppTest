@@ -11,13 +11,3 @@
   bottom: 50px;
   right: 100px;
 }
-
-.canvas{
-  filter: brightness(40%);
-}
-
-.canvas-nofilter{
-  width: 50%;
-  padding-bottom: 50%;
-  filter: brightness(160%);
-}
