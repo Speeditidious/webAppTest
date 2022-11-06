@@ -31,10 +31,9 @@ function tick() {
         canvasElement.hidden = false;
         outputContainer.hidden = false;
 
-        canvasElement.height = video.videoHeight;
-        canvasElement.width = video.videoWidth;
+        canvasElement.height = video.videoHeight * (document.body.clientWidth / video.videoWidth);
+        canvasElement.width = video.videoWidth * (document.body.clientWidth / video.videoWidth);
         // draw cam canvas
-        canvas.scale(screen.width / canvasElement.width, screen.width / canvasElement.width);
         canvas.filter = 'brightness(40%)';
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
         // draw QR canvas
@@ -49,14 +48,8 @@ function tick() {
         });
         if (code
             && code.location.topLeftCorner.x > (canvasElement.width * 0.25) && code.location.topLeftCorner.y > (canvasElement.height * 0.1)
-            && code.location.bottomRightCorner.x < (canvasElement.width) * 0.75 && code.location.bottomRightCorner.y < (canvasElement.height * 0.1 + canvasElement.width * 0.5)
-            ) {
-            
-            alert("video width: " + video.videoWidth);
-            alert("window width: " + window.innerWidth);
-            alert("document.body width: " + document.body.clientWidth);
-            alert("screen width: " + screen.width);
-            
+            && code.location.bottomRightCorner.x < (canvasElement.width * 0.75) && code.location.bottomRightCorner.y < (canvasElement.height * 0.1 + canvasElement.width * 0.5)
+            ) {   
             drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
