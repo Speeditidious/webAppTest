@@ -1,7 +1,11 @@
+body{
+  margin: 0;
+}
+
 .container{
   position: relative;
-  height: 2340px;
-  width: 1080px;
+  height: 100vw;
+  width: 100vh;
   margin: 0 auto;
   background-color: lightblue;
 }
