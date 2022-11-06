@@ -51,7 +51,7 @@ function tick() {
             && code.location.topLeftCorner.x > (canvasElement.width * 0.25) && code.location.topLeftCorner.y > (canvasElement.height * 0.1)
             && code.location.bottomRightCorner.x < (canvasElement.width) * 0.75 && code.location.bottomRightCorner.y < (canvasElement.height * 0.1 + canvasElement.width * 0.5)
             ) {
-            alert("QR detected");
+            alert("scale: " + screen.width / canvasElement.width);
             drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
