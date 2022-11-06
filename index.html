@@ -2,78 +2,30 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Washing Machine Camera</title>
-    <script type="text/javascript" src="./js/jsQR.js"></script>
+    <title>Washing Machine Check Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/washingMachineStyle.css">
   </head>
   <body>
     <div class="container">
-      <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
-      <canvas id="canvas" hidden>
-        <div class="canvas-nofilter"></div>
-      </canvas>
-      <div id="output" hidden>
-        <div id="outputMessage">No QR code detected.</div>
-        <div hidden><b>Data:</b> <span id="outputData"></span></div>
+      <div class="container-appbar">
+        <i class="bi bi-arrow-left"></i>
+        <span class="title-appbar">세탁기 상태 확인</span>
+      </div>
+      <div class="container-dropbox">
+        <select class="form-select" aria-label="select-dorm">
+          <option selected>기숙사 선택</option>
+          <option value="1">신관A</option>
+          <option value="2">신관B</option>
+          <option value="3">지관</option>
+        </select>
+      </div>
+      <div class="container-washingMachine">
+
+      </div>
+      <div class="container-button-use">
+        <button type="button" id="button-use" onclick="location.href='index.html'"><img src="./assets/button_use.png" alt="button_use"></button>
       </div>
     </div>
-
-    <script>
-      var video = document.createElement("video");
-      var canvasElement = document.getElementById("canvas");
-      var canvas = canvasElement.getContext("2d");
-      var loadingMessage = document.getElementById("loadingMessage");
-      var outputContainer = document.getElementById("output");
-      var outputMessage = document.getElementById("outputMessage");
-      var outputData = document.getElementById("outputData");
-
-      function drawLine(begin, end, color) {
-        canvas.beginPath();
-        canvas.moveTo(begin.x, begin.y);
-        canvas.lineTo(end.x, end.y);
-        canvas.lineWidth = 4;
-        canvas.strokeStyle = color;
-        canvas.stroke();
-      }
-
-      // Use facingMode: environment to attemt to get the front camera on phones
-      navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
-        video.srcObject = stream;
-        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-        video.play();
-        requestAnimationFrame(tick);
-      });
-
-      function tick() {
-        loadingMessage.innerText = "⌛ Loading video..."
-        // video ready
-        if (video.readyState === video.HAVE_ENOUGH_DATA) {
-          loadingMessage.hidden = true;
-          canvasElement.hidden = false;
-          outputContainer.hidden = false;
-
-          canvasElement.height = video.videoHeight;
-          canvasElement.width = video.videoWidth;
-          canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-          var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-          var code = jsQR(imageData.data, imageData.width, imageData.height, {
-            inversionAttempts: "dontInvert",
-          });
-          if (code) {
-            drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
-            drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
-            drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
-            drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-            outputMessage.hidden = true;
-            outputData.parentElement.hidden = false;
-            outputData.innerText = code.data;
-          } else {
-            outputMessage.hidden = false;
-            outputData.parentElement.hidden = true;
-          }
-        }
-        requestAnimationFrame(tick);
-      }
-    </script>
   </body>
 </html>
