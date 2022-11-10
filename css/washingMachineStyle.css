@@ -11,7 +11,6 @@ body {
 .container{
   position: relative;
   height: 100vh;
-  width: 100vw;
   margin: 0;
   background-color: lightblue;
 }
@@ -21,9 +20,9 @@ body {
   width: 100vw;
   text-align: center;
   background-color: #1C6758;
-  padding: 15px 0 15px 0;
+  padding: 20px 0 20px 0;
   color: white;
-  font-size: 1.5em;
+  font-size: 3em;
   font-weight: bold;
   top: 0%;
   left: 50%;
@@ -33,13 +32,14 @@ body {
 .container-dropbox{
   position: fixed;
   width: 500px;
-  top: 5%;
+  font-size: 3em;
+  top: 10%;
   left: 50%;
   transform: translate( -50%, 0% );
 }
 
 .container-washingmachine{
-  margin: 600px 0 0 100px;
+  margin: 500px 0 0 100px;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-auto-flow: column;
