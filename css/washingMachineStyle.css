@@ -5,8 +5,8 @@ body{
 .container{
   position: relative;
   height: 100vh;
-  width: 100vw;
-  margin: 0 auto;
+  width: calc(100vw - 15px);
+  margin: 0;
   background-color: lightblue;
 }
 
@@ -64,7 +64,7 @@ body{
   top: 52.54%;
   left: 53%;
   transform: translate( -50%, -50% );
-  background: conic-gradient(rgb(28, 103, 88) 300deg, rgb(237, 237, 237) 0deg);
+  background: conic-gradient(rgb(28, 103, 88) 30deg, rgb(237, 237, 237) 0deg);
 }
 
 .circular-progress-time::before{
@@ -75,6 +75,7 @@ body{
   height: 120px;
   border-radius: 50%;
   border: solid;
+  border-width: 2px;
   top: 50%;
   left: 50%;
   transform: translate( -50%, -50% );
@@ -92,7 +93,7 @@ body{
 }
 
 .container-button-use{
-  position: absolute;
+  position: fixed;
   bottom: 5%;
   right: 5%;
 }
