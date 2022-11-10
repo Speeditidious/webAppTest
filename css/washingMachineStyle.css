@@ -10,8 +10,99 @@ body{
   background-color: lightblue;
 }
 
+.container-washingmachine{
+  margin: 100px 0 0 100px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-row-gap: 20px;
+  grid-column-gap: 50px;
+  width: fit-content;
+}
+
+.container-washingmachine-element{
+  position: relative;
+  width: 200px;
+}
+
+.button-washingmachine{
+  background-color: transparent;
+  border: none;
+}
+
+.button-washingmachine img{
+  width: 200px;
+}
+
+.button-washingmachine-reservation{
+  background-color: transparent;
+  border: none;
+}
+
+.button-washingmachine-reservation img{
+  width: 80px;
+  position: absolute;
+  top: -10%;
+  right: -20%;
+}
+
+.name-washingmachine{
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: left;
+  position: absolute;
+  top: 3.5%;
+  left: 10%;
+}
+
+.circular-progress-time{
+  position: absolute;
+  background-color: #1C6758;
+  width: 147px;
+  height: 147px;
+  border-radius: 50%;
+  top: 52.54%;
+  left: 53%;
+  transform: translate( -50%, -50% );
+  background: conic-gradient(rgb(28, 103, 88) 300deg, rgb(237, 237, 237) 0deg);
+}
+
+.circular-progress-time::before{
+  content: "";
+  position: absolute;
+  background-color: white;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: solid;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+}
+
+.time-washingmachine{
+  color: #1C6758;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  position: absolute;
+  top: 52.54%;
+	left: 53%;
+  transform: translate( -50%, -50% );
+}
+
 .container-button-use{
   position: absolute;
-  bottom: 50px;
-  right: 100px;
+  bottom: 5%;
+  right: 5%;
+}
+
+#button-use{
+  background-color: transparent;
+  border: none;
+}
+
+#button-use img{
+  width: 250px;
+  height: 250px;
 }
