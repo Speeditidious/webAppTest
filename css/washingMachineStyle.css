@@ -135,8 +135,8 @@ body {
 }
 
 #button-use img{
-  width: 500px;
-  height: 500px;
+  width: 100px;
+  height: 100px;
 }
 
 #body-cam{
@@ -145,13 +145,13 @@ body {
 
 .container-description{
   text-align: center;
-  padding: 100px 0px 100px 0px;
+  padding: 20px 0px 20px 0px;
 }
 
 #description-qr{
   color: white;
   font-weight: bold;
-  font-size: 4em;
+  font-size: 1em;
 }
 
 #outputMessage{
@@ -160,4 +160,23 @@ body {
 
 #outputData{
   color: white;
+}
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: 1024px){
+  #button-use img{
+    width: 500px;
+    height: 500px;
+  }
+
+  .container-description{
+    padding: 100px 0px 100px 0px;
+  }
+
+  #description-qr{
+    font-size: 4em;
+  }
 }
