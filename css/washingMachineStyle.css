@@ -8,13 +8,6 @@ body {
   background-color: bisque;
 }
 
-.container{
-  position: relative;
-  height: 100vh;
-  margin: 0;
-  background-color: lightblue;
-}
-
 .container-appbar{
   position: fixed;
   width: 100vw;
@@ -144,4 +137,19 @@ body {
 #button-use img{
   width: 500px;
   height: 500px;
+}
+
+#body-cam{
+  background-color: black;
+}
+
+.container-description{
+  text-align: center;
+  padding: 100px 0px 100px 0px;
+}
+
+#description-qr{
+  color: white;
+  font-weight: bold;
+  font-size: 4em;
 }
