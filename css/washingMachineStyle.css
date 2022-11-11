@@ -153,3 +153,11 @@ body {
   font-weight: bold;
   font-size: 4em;
 }
+
+#outputMessage{
+  color: white;
+}
+
+#outputData{
+  color: white;
+}

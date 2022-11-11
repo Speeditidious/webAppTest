@@ -54,9 +54,26 @@ function tick() {
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+
+            const spawn = require('child_process').spawn;
+
+            const result = spawn('py', ['../py/test.py', 'param1', 'param2']);
+
+            result.stdout.on('data', function(data) {
+                console.log("111", data.toString());
+            });
+
+            result.stderr.on('data', function(data) {
+                console.log("222", data.toString());
+            });
+
             outputMessage.hidden = true;
             outputData.parentElement.hidden = false;
             outputData.innerText = code.data;
+
+            outputData.innerText = data.toString();
+
+            
         } else {
             outputMessage.hidden = false;
             outputData.parentElement.hidden = true;
