@@ -64,8 +64,8 @@ function tick() {
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
 
             editCanvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4, 0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
-            var editImage = editCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-            window.location.href = editImage;
+            var editImage = editCanvas.toDataURL("image/png");
+            alert(editImage);
             //RunOCR(imageData);
 
             outputMessage.hidden = true;
