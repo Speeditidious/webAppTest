@@ -6,9 +6,6 @@ var outputContainer = document.getElementById("output");
 var outputMessage = document.getElementById("outputMessage");
 var outputData = document.getElementById("outputData");
 
-var editCanvasElement = document.getElementById("editCanvas");
-var editCanvas = canvasElement.getContext("2d");
-
 function drawLine(begin, end, color) {
     canvas.beginPath();
     canvas.moveTo(begin.x, begin.y);
@@ -37,10 +34,6 @@ function tick() {
         canvasElement.height = video.videoHeight * (document.body.clientWidth / video.videoWidth);
         canvasElement.width = video.videoWidth * (document.body.clientWidth / video.videoWidth);
 
-        editCanvasElement.hidden = false;
-        editCanvasElement.height = canvasElement.height;
-        editCanvasElement.width = canvasElement.width;
-
         // draw cam canvas
         canvas.filter = 'brightness(40%)';
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
@@ -62,12 +55,13 @@ function tick() {
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+
+            canvas.beginPath();
+            var editCanvas = canvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4,  0, canvasElement.height * 0.6, canvasElement.width, canvasElement.height * 0.4);
+            var editImage = editCanvas.toDataURL('image/png');
+            document.write('<a href="'+editImage+'"><img src="'+editImage+'"/></a>');
             
-            editCanvas.strokeStyle = "#FF0000";
-            editCanvas.lineWidth = 5;
-            editCanvas.strokeRect(0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
-            editCanvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4, 0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
-            //RunOCR(imageData);
+            //RunOCR(ocrImageData);
 
             outputMessage.hidden = true;
             outputData.parentElement.hidden = false;
