@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no">
     <title>Washing Machine Check Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/washingMachineStyle.css">
@@ -14,13 +14,13 @@
       <span class="title-appbar">세탁기 상태 확인</span>
     </div>
     <div class="container-dorminfo">
-      <span id="dorminfo">신관 A</span>
+      <span id="dorminfo">지관 9층</span>
     </div>
 
     <div class="container-washingmachine">
       <div class="container-washingmachine-element">
         <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 1</span>
+          <span class="name-washingmachine">지관 9-1</span>
           <div class="circular-progress-time"></div>
           <img src="./assets/washingmachine.png" alt="washingmachine">
           <span class="time-washingmachine">0분</span>
@@ -29,80 +29,19 @@
       </div>
       <div class="container-washingmachine-element">
         <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 2</span>
+          <span class="name-washingmachine">지관 9-2</span>
           <div class="circular-progress-time"></div>
           <img src="./assets/washingmachine.png" alt="washingmachine">
           <span class="time-washingmachine">0분</span>
         </button>
-        <button type="button" class="button-washingmachine-reservation"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
-      </div>
-      <div class="container-washingmachine-element">
-        <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 3</span>
-          <div class="circular-progress-time"></div>
-          <img src="./assets/washingmachine.png" alt="washingmachine">
-          <span class="time-washingmachine">0분</span>
-        </button>
-        <button type="button" class="button-washingmachine-reservation"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
-      </div>
-      <div class="container-washingmachine-element">
-        <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 1</span>
-          <div class="circular-progress-time"></div>
-          <img src="./assets/washingmachine.png" alt="washingmachine">
-          <span class="time-washingmachine">0분</span>
-        </button>
-        <button type="button" class="button-washingmachine-reservation"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
-      </div>
-      <div class="container-washingmachine-element">
-        <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 2</span>
-          <div class="circular-progress-time"></div>
-          <img src="./assets/washingmachine.png" alt="washingmachine">
-          <span class="time-washingmachine">0분</span>
-        </button>
-        <button type="button" class="button-washingmachine-reservation"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
-      </div>
-      <div class="container-washingmachine-element">
-        <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 3</span>
-          <div class="circular-progress-time"></div>
-          <img src="./assets/washingmachine.png" alt="washingmachine">
-          <span class="time-washingmachine">0분</span>
-        </button>
-        <button type="button" class="button-washingmachine-reservation"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
-      </div>
-      <div class="container-washingmachine-element">
-        <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 1</span>
-          <div class="circular-progress-time"></div>
-          <img src="./assets/washingmachine.png" alt="washingmachine">
-          <span class="time-washingmachine">0분</span>
-        </button>
-        <button type="button" class="button-washingmachine-reservation"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
-      </div>
-      <div class="container-washingmachine-element">
-        <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 2</span>
-          <div class="circular-progress-time"></div>
-          <img src="./assets/washingmachine.png" alt="washingmachine">
-          <span class="time-washingmachine">0분</span>
-        </button>
-        <button type="button" class="button-washingmachine-reservation"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
-      </div>
-      <div class="container-washingmachine-element">
-        <button type="button" class="button-washingmachine">
-          <span class="name-washingmachine">신A 3</span>
-          <div class="circular-progress-time"></div>
-          <img src="./assets/washingmachine.png" alt="washingmachine">
-          <span class="time-washingmachine">0분</span>
-        </button>
-        <button type="button" class="button-washingmachine-reservation"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
+        <button type="button" class="button-washingmachine-reservation" onclick="ReservationButtonClicked()"><img src="./assets/button_reservation.png" alt="button_reservation"></button>
       </div>
     </div>
 
     <div class="container-button-use">
-      <button type="button" id="button-use" onclick="location.href='WashingMachineCamera.html'"><img src="./assets/button_use.png" alt="button_use"></button>
+      <button type="button" id="button-use" onclick="UseButtonClicked()"><img src="./assets/button_use.png" alt="button_use"></button>
     </div>
+
+    <script src="./js/WashingMachineState.js"></script>
   </body>
 </html>

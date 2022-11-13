@@ -2,14 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no">
     <title>Washing Machine Camera</title>
     <script type="text/javascript" src="./js/jsQR.js"></script>
     <link rel="stylesheet" href="./css/washingMachineStyle.css">
+    <script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
   </head>
   <body id="body-cam">
     <div class="container-description">
-      <span class="description" id="description-qr">QR코드를 틀 안에 맞춰주세요.</span>
+      <span class="description" id="description-qr">QR코드를 <br> 틀 안에 맞춰주세요.</span>
     </div>
     <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
     <canvas id="canvas" hidden></canvas>
@@ -17,7 +18,8 @@
       <div id="outputMessage">No QR code detected.</div>
       <div hidden><b>Data:</b> <span id="outputData"></span></div>
     </div>
+    <canvas id="originalCanvas" hidden></canvas>
 
-    <script type="text/javascript" src="./js/CamScript.js"></script>
+    <script type="module" src="./js/CamScript.js"></script>
   </body>
 </html>

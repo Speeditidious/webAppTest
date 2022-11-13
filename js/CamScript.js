@@ -6,14 +6,19 @@ var outputContainer = document.getElementById("output");
 var outputMessage = document.getElementById("outputMessage");
 var outputData = document.getElementById("outputData");
 
-function drawLine(begin, end, color) {
-    canvas.beginPath();
-    canvas.moveTo(begin.x, begin.y);
-    canvas.lineTo(end.x, end.y);
-    canvas.lineWidth = 4;
-    canvas.strokeStyle = color;
-    canvas.stroke();
-}
+var editCanvasElement = document.getElementById("editCanvas");
+var editCanvas = canvasElement.getContext("2d");
+
+/*
+target 빼고 files[0] 대신에 이미지 넣으면 될듯?
+const recognize = async ({ target: { files }  }) => {
+    const { data: { text } } = await Tesseract.recognize(files[0], 'kor', {
+        corePath: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js',
+        logger: m => console.log(m),
+    });
+    console.log(text);
+  }
+*/
 
 // Use facingMode: environment to attemt to get the front camera on phones
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
@@ -33,6 +38,11 @@ function tick() {
 
         canvasElement.height = video.videoHeight * (document.body.clientWidth / video.videoWidth);
         canvasElement.width = video.videoWidth * (document.body.clientWidth / video.videoWidth);
+
+        editCanvasElement.hidden = false;
+        editElement.height = canvasElement.height;
+        editElement.width = canvasElement.width;
+
         // draw cam canvas
         canvas.filter = 'brightness(40%)';
         canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
@@ -54,30 +64,25 @@ function tick() {
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
-
-            const spawn = require('child_process').spawn;
-
-            const result = spawn('py', ['../py/test.py', 'param1', 'param2']);
-
-            result.stdout.on('data', function(data) {
-                console.log("111", data.toString());
-            });
-
-            result.stderr.on('data', function(data) {
-                console.log("222", data.toString());
-            });
+            
+            editCanvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4, 0, 0, editElement.width, editElement.height * 0.4);
+            //RunOCR(imageData);
 
             outputMessage.hidden = true;
             outputData.parentElement.hidden = false;
             outputData.innerText = code.data;
-
-            outputData.innerText = data.toString();
-
-            
         } else {
             outputMessage.hidden = false;
             outputData.parentElement.hidden = true;
         }
     }
     requestAnimationFrame(tick);
+}
+
+async function RunOCR(image) {
+    let text = await Tesseract.recognize(image, 'kor', {
+        corePath: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js',
+        logger: m => console.log(m),
+    });
+    alert(text);
 }
