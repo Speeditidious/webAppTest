@@ -9,16 +9,14 @@ var outputData = document.getElementById("outputData");
 var editCanvasElement = document.getElementById("editCanvas");
 var editCanvas = canvasElement.getContext("2d");
 
-/*
-target 빼고 files[0] 대신에 이미지 넣으면 될듯?
-const recognize = async ({ target: { files }  }) => {
-    const { data: { text } } = await Tesseract.recognize(files[0], 'kor', {
-        corePath: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js',
-        logger: m => console.log(m),
-    });
-    console.log(text);
-  }
-*/
+function drawLine(begin, end, color) {
+    canvas.beginPath();
+    canvas.moveTo(begin.x, begin.y);
+    canvas.lineTo(end.x, end.y);
+    canvas.lineWidth = 4;
+    canvas.strokeStyle = color;
+    canvas.stroke();
+}
 
 // Use facingMode: environment to attemt to get the front camera on phones
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
@@ -65,12 +63,10 @@ function tick() {
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
             
-            /*
             editCanvas.strokeStyle = "#FF0000";
             editCanvas.lineWidth = 5;
             editCanvas.strokeRect(0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
             editCanvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4, 0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
-            */
             //RunOCR(imageData);
 
             outputMessage.hidden = true;
