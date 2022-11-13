@@ -59,16 +59,18 @@ function tick() {
         if (code
             && code.location.topLeftCorner.x > (canvasElement.width * 0.25) && code.location.topLeftCorner.y > (canvasElement.height * 0.1)
             && code.location.bottomRightCorner.x < (canvasElement.width * 0.75) && code.location.bottomRightCorner.y < (canvasElement.height * 0.1 + canvasElement.width * 0.5)
-            ) {   
+            ) {
             drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
             
+            /*
             editCanvas.strokeStyle = "#FF0000";
             editCanvas.lineWidth = 5;
             editCanvas.strokeRect(0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
             editCanvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4, 0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
+            */
             //RunOCR(imageData);
 
             outputMessage.hidden = true;
