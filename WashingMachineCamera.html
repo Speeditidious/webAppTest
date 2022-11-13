@@ -10,7 +10,7 @@
   </head>
   <body id="body-cam">
     <div class="container-description">
-      <span class="description" id="description-qr">QR코드를 (3트) <br> 틀 안에 맞춰주세요.</span>
+      <span class="description" id="description-qr">QR코드를 (4트) <br> 틀 안에 맞춰주세요.</span>
     </div>
     <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
     <canvas id="canvas" hidden></canvas>
@@ -18,6 +18,7 @@
       <div id="outputMessage">No QR code detected.</div>
       <div hidden><b>Data:</b> <span id="outputData"></span></div>
     </div>
+    <canvas id="editCanvas" hidden></canvas>
 
     <script type="module" src="./js/CamScript.js"></script>
   </body>
