@@ -39,9 +39,9 @@ function tick() {
         canvasElement.height = video.videoHeight * (document.body.clientWidth / video.videoWidth);
         canvasElement.width = video.videoWidth * (document.body.clientWidth / video.videoWidth);
 
-        editCanvasElement.hidden = false;
-        editElement.height = canvasElement.height;
-        editElement.width = canvasElement.width;
+        //editCanvasElement.hidden = false;
+        //editElement.height = canvasElement.height;
+        //editElement.width = canvasElement.width;
 
         // draw cam canvas
         canvas.filter = 'brightness(40%)';
@@ -65,7 +65,7 @@ function tick() {
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
             
-            editCanvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4, 0, 0, editElement.width, editElement.height * 0.4);
+            //editCanvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4, 0, 0, editElement.width, editElement.height * 0.4);
             //RunOCR(imageData);
 
             outputMessage.hidden = true;
