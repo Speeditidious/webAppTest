@@ -65,6 +65,9 @@ function tick() {
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
             drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
             
+            editCanvas.strokeStyle = "#FF0000";
+            editCanvas.lineWidth = 5;
+            editCanvas.strokeRect(0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
             editCanvas.drawImage(video, 0, video.videoHeight * 0.6, video.videoWidth, video.videoHeight * 0.4, 0, 0, editCanvasElement.width, editCanvasElement.height * 0.4);
             //RunOCR(imageData);
 
